@@ -1,0 +1,3 @@
+Realocar schematics do material 
+ajustar de acordo com angular-rtb
+modularizar
