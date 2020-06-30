@@ -1,4 +1,4 @@
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { appRoutesNames } from './app-routes-names';
 
 import { PageNotFoundComponent } from './pages/_page-not-found/page-not-found.component';
@@ -18,4 +18,7 @@ const appRoutes: Routes = [
   }
 ];
 
-export const APP_ROUTES = RouterModule.forRoot( appRoutes, { scrollPositionRestoration: 'enabled' });
+export const APP_ROUTES = RouterModule.forRoot( appRoutes, { 
+  preloadingStrategy: PreloadAllModules,
+  scrollPositionRestoration: 'enabled' 
+});
