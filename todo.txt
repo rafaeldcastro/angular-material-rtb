@@ -1,6 +1,7 @@
 
 ===
 [x] Theming 
+[ ] Tela BASE com funções de Meta e Título
 [ ] JWT
 [ ] Guards
 [ ] Notifications

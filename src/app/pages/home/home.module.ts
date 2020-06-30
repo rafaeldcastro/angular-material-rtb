@@ -5,23 +5,23 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 /** COMPONENTS */
-import { PageNotFoundComponent } from './page-not-found.component';
+import { HomeComponent } from './home.component';
 
 @NgModule({
   declarations: [
-    PageNotFoundComponent,
+    HomeComponent,
   ],
   imports: [
     CommonModule,
     RouterModule.forChild([
       {
         path: '',
-        component: PageNotFoundComponent
+        component: HomeComponent
       }
     ])
   ],
   exports: [
-    PageNotFoundComponent
+    HomeComponent
   ]
 })
-export class PageNotFoundModule {}
+export class HomeModule {}

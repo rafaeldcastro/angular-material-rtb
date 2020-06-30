@@ -1,6 +1,8 @@
 import { Routes, RouterModule } from '@angular/router';
 import { appRoutesNames } from './app-routes-names';
 
+import { PageNotFoundComponent } from './pages/_page-not-found/page-not-found.component';
+
 /**GUARDS */
 
 
@@ -12,7 +14,7 @@ const appRoutes: Routes = [
   },
   {
     path: '**',
-    loadChildren: () => import('./pages/_page-not-found/page-not-found.module').then(m => m.PageNotFoundModule),
+    component: PageNotFoundComponent
   }
 ];
 
