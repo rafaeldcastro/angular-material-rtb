@@ -1,7 +1,18 @@
-Realocar schematics do material 
-ajustar de acordo com angular-rtb
-modularizar
-
 
 ===
-Theming 
+[x] Theming 
+[ ] JWT
+[ ] Guards
+[ ] Notifications
+[ ] Paginas de Auth
+[ ] API de teste
+[ ] Storage service
+[ ] Pages routes
+[ ] Ng Deactivate
+
+
+== Components
+
+[] Select
+[] Checkbox
+
