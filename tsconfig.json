@@ -1,12 +1,14 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "src", /*original './' */
     "paths": {
       "@env": ["environments/environment"],
-      "@shared/*": ["app/shared/*"],
       "@core/*": ["app/_core/*"],
-      "@pages/*": ["app/pages/*"]
+      "@pages/*": ["app/pages/*"],
+      "@shared/*": ["app/shared/*"],
+      "@models/*": ["app/shared/models/*"],
+      "@constants/*": ["app/_core/_constants*"]
     },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,

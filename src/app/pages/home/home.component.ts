@@ -15,6 +15,5 @@ export class HomeComponent {
 
   private setPageAttributes(){
     this.titleService.setTitle("Home");
-    
   }
 }
