@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 import { PAGES_ROUTES } from './pages-routes';
 
 import { PagesComponent } from './pages.component';
-import { ComponentsModule } from '../shared/components/components.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +13,6 @@ import { ComponentsModule } from '../shared/components/components.module';
     RouterModule,
     PAGES_ROUTES,
     CommonModule,
-    ComponentsModule
   ],
   exports: [
     PagesComponent,

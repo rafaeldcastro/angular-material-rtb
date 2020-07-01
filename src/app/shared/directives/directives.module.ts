@@ -1,22 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { 
-    BackButtonDirective, 
-    InteractionDirective 
-} from './index';
+import * as indexDirectives from './index';
 
 @NgModule({
     declarations: [
-        BackButtonDirective,
-        InteractionDirective
+        indexDirectives.directives
     ],
     imports: [
         CommonModule,
     ],
     exports: [
-        BackButtonDirective,
-        InteractionDirective
+        indexDirectives.directives
     ]
 })
 export class DirectivesModule { }

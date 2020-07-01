@@ -4,17 +4,11 @@ import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 registerLocaleData(localePt, 'pt');
 
-import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
-import { JwtModule } from '@auth0/angular-jwt';
 import { APP_ROUTES } from './app-routes';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CoreModule } from './_core/core.module';
 
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-export function jwtTokenGetter() {
-  return localStorage.getItem('access_token');
-}
 
 @NgModule({
   declarations: [
@@ -22,15 +16,9 @@ export function jwtTokenGetter() {
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     APP_ROUTES,
-    ReactiveFormsModule,
-    HttpClientModule,
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: jwtTokenGetter
-      }
-    })
+    BrowserAnimationsModule,
+    CoreModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: "pt" }

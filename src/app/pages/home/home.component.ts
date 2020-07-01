@@ -1,3 +1,4 @@
+import { pagesRoutesNames } from '@pages/pages-routes-names';
 import { Component } from '@angular/core';
 
 import { Title } from '@angular/platform-browser';
@@ -14,5 +15,6 @@ export class HomeComponent {
 
   private setPageAttributes(){
     this.titleService.setTitle("Home");
+    
   }
 }

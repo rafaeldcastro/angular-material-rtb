@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 
-import { MaterialSchematicsComponentsModule } from './material-schematics/material-schema-components.module';
+import { MatSchematicsComponentsModule } from './material-schematics/mat-schema-components.module';
 
 /**COMPONENTS */
 // import { 
@@ -14,12 +12,10 @@ import { MaterialSchematicsComponentsModule } from './material-schematics/materi
         
     ],
     imports: [
-        RouterModule,
-        CommonModule,
-        MaterialSchematicsComponentsModule
+        MatSchematicsComponentsModule
     ],
     exports: [
-        MaterialSchematicsComponentsModule
+        MatSchematicsComponentsModule
     ]
 })
 export class ComponentsModule { }
