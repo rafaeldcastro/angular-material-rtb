@@ -4,7 +4,7 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 @Injectable({
   providedIn: 'root'
 })
-export class NotificationService {
+export class ToastService {
   constructor(
     private readonly snackBar: MatSnackBar,
     private readonly zone: NgZone

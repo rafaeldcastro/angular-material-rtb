@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { pagesRoutesNames } from '@pages/pages-routes-names';
-import { Title } from '@angular/platform-browser';
+import { appRoutesNames } from '@app/app-routes-names';
+
+/**SERVICES */
+import { AuthService } from '@shared/services/_auth/auth.service';
 
 @Component({
   selector: 'app-signup-page',
@@ -10,10 +13,17 @@ import { Title } from '@angular/platform-browser';
 })
 export class SignupPageComponent {
 
-  constructor(private titleService: Title) {
+  constructor(
+    private router: Router,
+    private authService: AuthService
+  ) {
+
+    if (this.authService.currentUserValue) {
+      this.navigateTo();
+    }
   }
 
-  private setPageAttributes(){
-    this.titleService.setTitle("Home");
+  private navigateTo(){
+    this.router.navigate([`/${appRoutesNames.HOME.route}`]);
   }
 }

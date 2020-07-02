@@ -3,7 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { APP_CONSTANTS } from '@constants/index';
 import { environment } from '@env';
+
+/**MODELS */
 import { User } from '@models/user/user.model';
 
 @Injectable({ providedIn: 'root' })
@@ -15,7 +18,7 @@ export class AuthService {
     currentUser: Observable<User>;
 
     constructor(private http: HttpClient) {
-        this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+        this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem(`${APP_CONSTANTS.APP_PREFIX}CURRENT-USER`)));
         this.currentUser = this.currentUserSubject.asObservable();
     }
 
@@ -32,7 +35,7 @@ export class AuthService {
         // return this.http.post<any>(`${this.URL_API}/authenticate`, { username, password })
         return this.http.post<any>('https://reqres.in/api/login', { username, password })
             .pipe(map(user => {
-                localStorage.setItem('currentUser', JSON.stringify(user));
+                localStorage.setItem(`${APP_CONSTANTS.APP_PREFIX}CURRENT-USER`, JSON.stringify(user));
                 this.currentUserSubject.next(user);
                 return user;
             }));
@@ -40,7 +43,7 @@ export class AuthService {
 
     logout() {
         // remove user from local storage to log user out
-        localStorage.removeItem('currentUser');
+        localStorage.removeItem(`${APP_CONSTANTS.APP_PREFIX}CURRENT-USER`);
         this.currentUserSubject.next(null);
     }
 

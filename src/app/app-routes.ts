@@ -2,28 +2,34 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 import { appRoutesNames } from './app-routes-names';
 
+/**COMPONENTS */
 import { PageNotFoundComponent } from './pages/_page-not-found/page-not-found.component';
 
 /**GUARDS */
 import { AuthCanActivateGuard } from './shared/services/_guards/can-activate/auth.can-activate.guard';
-import { AuthCanLoadGuard } from './shared/services/_guards/can-load/auth.can-load.guard';
 
 const appRoutes: Routes = [
   {
-    path: appRoutesNames.AUTH.route,
-    loadChildren: () => import('./pages/_auth/auth-pages.module').then(m => m.AuthPagesModule),
-    canActivate: [ AuthCanActivateGuard ] //TODO Só entra se nao tiver logado
+    path: appRoutesNames.LOGIN.route,
+    loadChildren: () => import('./pages/_auth/login/login.module').then(m => m.LoginPageModule),
   },
   {
-    path: appRoutesNames.PAGES.route,
-    loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule),
-    canLoad: [ AuthCanLoadGuard ],
+    path: appRoutesNames.SIGNUP.route,
+    loadChildren: () => import('./pages/_auth/signup/signup.module').then(m => m.SignupPageModule),
+  },
+  {
+    path: appRoutesNames.RECOVER_PASSWORD.route,
+    loadChildren: () => import('./pages/_auth/recover-password/recover.module').then(m => m.RecoverPasswordPageModule),
+  },
+  {
+    path: appRoutesNames.HOME.route,
+    loadChildren: () => import('./pages/main/home/home.module').then(m => m.HomeModule),
     canActivate: [ AuthCanActivateGuard ]
   },
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: appRoutesNames.AUTH.route
+    redirectTo: appRoutesNames.LOGIN.route
   },
   {
     path: '**',

@@ -12,7 +12,7 @@ import { DirectivesModule } from './directives/directives.module';
         FormsModule,
         ComponentsModule,
         PipesModule,
-        DirectivesModule
+        DirectivesModule,
     ],
     exports: [
         CommonModule,
@@ -23,4 +23,4 @@ import { DirectivesModule } from './directives/directives.module';
         DirectivesModule
     ]
 })
-export class CoreModule { }
+export class SharedModule { }

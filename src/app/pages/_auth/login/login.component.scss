@@ -1,0 +1,15 @@
+.form-container{
+    height: 100%;
+    
+    mat-card{
+        max-width: 440px;
+        min-width: 320px;
+        width: 80%;
+
+        mat-card-content{
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+}

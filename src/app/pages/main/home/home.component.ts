@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-import { pagesRoutesNames } from '@pages/pages-routes-names';
 import { Title } from '@angular/platform-browser';
 
 @Component({

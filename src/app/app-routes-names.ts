@@ -1,10 +1,18 @@
 export const appRoutesNames = {
-    AUTH: {
-        route: 'auth',
-        label: 'Auth'
+    LOGIN: {
+        route: 'login',
+        label: 'Login'
     },
-    PAGES: {
-        route: 'p',
-        label: 'Pages'
+    SIGNUP: {
+        route: 'signup',
+        label: 'Signup'
+    },
+    RECOVER_PASSWORD: {
+        route: 'recover-password',
+        label: 'Recover Password'
+    },
+    HOME: {
+        route: 'home',
+        label: 'Home'
     }
 }

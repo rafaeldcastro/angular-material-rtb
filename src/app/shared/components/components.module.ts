@@ -1,18 +1,17 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { MatSchematicsComponentsModule } from './material-schematics/mat-schema-components.module';
 
 /**COMPONENTS */
 import { LoadingMiniComponent } from './loading-mini/loading-mini.component';
-// import { 
-     
-// } from './index';
 
 @NgModule({
     declarations: [
         LoadingMiniComponent
     ],
     imports: [
+        CommonModule,
         MatSchematicsComponentsModule
     ],
     exports: [

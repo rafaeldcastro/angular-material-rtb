@@ -32,3 +32,30 @@ $angular-material-rtb-theme: mat-light-theme($angular-material-rtb-primary, $ang
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Toast Colorize */
+.error-notification-overlay {
+    color: mat-color($angular-material-rtb-warn, default-contrast);
+    background-color: mat-color($angular-material-rtb-warn);
+}
+
+.info-notification-overlay {
+    color: mat-color($angular-material-rtb-accent, default-contrast);
+    background-color: mat-color($angular-material-rtb-accent);
+}
+
+.success-notification-overlay {
+    color: mat-color($angular-material-rtb-primary, default-contrast);
+    background-color: mat-color($angular-material-rtb-primary);
+}
+
+.warning-notification-overlay {
+    color: mat-color($angular-material-rtb-warn, default-contrast);
+    background-color: mat-color($angular-material-rtb-warn);
+}
+
+
+/* HELPERS & FIXES*/
+mat-form-field{
+    input { padding-bottom: 4px !important; }
+}

@@ -22,7 +22,7 @@ export interface FlatTreeNode {
 }
 
 @Component({
-  selector: 'app-tree',
+  selector: 'mat-tree',
   templateUrl: './tree.component.html',
   styleUrls: ['./tree.component.scss']
 })
