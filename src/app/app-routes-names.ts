@@ -1,11 +1,7 @@
 export const appRoutesNames = {
-    LOGIN: {
-        route: 'login',
-        label: 'Login'
-    },
-    SIGNUP: {
-        route: 'signup',
-        label: 'Signup'
+    AUTH: {
+        route: 'auth',
+        label: 'Auth'
     },
     PAGES: {
         route: 'p',

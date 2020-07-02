@@ -4,11 +4,11 @@ import { pagesRoutesNames } from '@pages/pages-routes-names';
 import { Title } from '@angular/platform-browser';
 
 @Component({
-  selector: 'home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-signup-page',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.scss']
 })
-export class HomeComponent {
+export class SignupPageComponent {
 
   constructor(private titleService: Title) {
   }

@@ -3,12 +3,13 @@
   "compilerOptions": {
     "baseUrl": "src", /*original './' */
     "paths": {
-      "@env": ["environments/environment"],
+      "@app/*": ["app/*"],
       "@core/*": ["app/_core/*"],
-      "@pages/*": ["app/pages/*"],
-      "@shared/*": ["app/shared/*"],
+      "@constants/*": ["app/_core/_constants/*"],
+      "@env": ["environments/environment"],
       "@models/*": ["app/shared/models/*"],
-      "@constants/*": ["app/_core/_constants*"]
+      "@pages/*": ["app/pages/*"],
+      "@shared/*": ["app/shared/*"]
     },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,

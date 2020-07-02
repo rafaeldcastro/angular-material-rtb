@@ -4,11 +4,11 @@ import { pagesRoutesNames } from '@pages/pages-routes-names';
 import { Title } from '@angular/platform-browser';
 
 @Component({
-  selector: 'home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-recover-password-page',
+  templateUrl: './recover.component.html',
+  styleUrls: ['./recover.component.scss']
 })
-export class HomeComponent {
+export class RecoverPasswordPageComponent {
 
   constructor(private titleService: Title) {
   }

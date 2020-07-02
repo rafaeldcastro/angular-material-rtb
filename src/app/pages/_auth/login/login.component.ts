@@ -4,11 +4,11 @@ import { pagesRoutesNames } from '@pages/pages-routes-names';
 import { Title } from '@angular/platform-browser';
 
 @Component({
-  selector: 'home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-login-page',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
-export class HomeComponent {
+export class LoginPageComponent {
 
   constructor(private titleService: Title) {
   }
