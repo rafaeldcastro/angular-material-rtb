@@ -1,12 +1,10 @@
-<form [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit()" class="d-flex justify-content-center form-container">
+<!-- <form [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit()" class="d-flex justify-content-center form-container">
 
-    <mat-card class="align-self-center">
-
-        <mat-card-header>
-            <mat-card-title>Login</mat-card-title>
-        </mat-card-header>
-
+    <mat-card class="align-self-center animate__animated animate__fadeIn">
+        
         <mat-card-content>
+
+            <undraw-press-play class="undraw-pic"></undraw-press-play>
 
             <mat-form-field>
 
@@ -22,28 +20,48 @@
             </mat-form-field>
 
 
-            <mat-form-field>
+            <mat-form-field class="form-field-pass">
                 <mat-icon matPrefix>lock</mat-icon>
 
                 <mat-label>Password</mat-label>
 
                 <input matInput [type]="showHidePass ? 'password' : 'text'" formControlName="password">
 
-                <mat-icon matSuffix (click)="showHidePass = !showHidePass" [attr.aria-label]="'Hide password'"
+                <mat-icon matSuffix class="icon-visibility" (click)="showHidePass = !showHidePass" 
+                    title="Show/Hide password"
+                    [attr.aria-label]="'Hide password'"
                     [attr.aria-pressed]="showHidePass">{{showHidePass ? 'visibility_off' : 'visibility'}}</mat-icon>
+
+                <mat-hint align="end"><a [routerLink]="'/'+ appRoutes.RECOVER_PASSWORD.route"><strong>Forgot password</strong></a></mat-hint>
 
                 <mat-error *ngIf="false">
                     Password is <strong>required</strong>
                 </mat-error>
             </mat-form-field>
 
+            <br>
+
+            <div class="d-flex justify-content-center">
+                <button mat-raised-button color="warn" style="color: #fff" type="submit" class="w-75 rounded-pill">Entrar</button>
+            </div>
+
+
+            <span class="divider line one-line">OR</span>
+
+            <div class="d-flex justify-content-center">
+                <p>Don't you have an account? <a [routerLink]="'/'+ appRoutes.SIGNUP.route"><strong>Sign-Up</strong></a></p>
+            </div>
 
         </mat-card-content>
 
-        <mat-card-actions>
-            <button mat-raised-button color="primary" type="submit">Entrar</button>
+        <mat-card-actions class="card-actions d-flex justify-content-center" *ngIf="false">
+            <button mat-fab color="warn" aria-label="Login with Google"><i class="fab fa-google"></i></button>
+            <button mat-fab color="primary" aria-label="Login with Facebook"><i class="fab fa-facebook-f"></i></button>
         </mat-card-actions>
+
 
     </mat-card>
 
-</form>
+</form> -->
+
+<mat-navigation></mat-navigation>

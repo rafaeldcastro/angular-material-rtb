@@ -54,8 +54,5 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     background-color: mat-color($angular-material-rtb-warn);
 }
 
-
-/* HELPERS & FIXES*/
-mat-form-field{
-    input { padding-bottom: 4px !important; }
-}
+/*Helpers and Fixes*/
+@import './style-helpers.scss';

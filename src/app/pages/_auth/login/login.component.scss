@@ -5,10 +5,36 @@
         max-width: 440px;
         min-width: 320px;
         width: 80%;
-
+        
         mat-card-content{
             display: flex;
             flex-direction: column;
+
+            .undraw-pic{
+                margin: 0 auto 20px;
+                min-width: 145px;
+                width: 50%;
+            }
+
+            .mat-form-field{
+
+                mat-icon{
+                    margin-right: 5px;
+                }
+
+            }
+            
+            .form-field-pass{
+                
+                .icon-visibility{
+                    cursor: pointer;
+                }
+            }
+
+        }
+        
+        .card-actions button + button {
+            margin-left: 12px;
         }
     }
 

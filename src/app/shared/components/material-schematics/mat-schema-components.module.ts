@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import * as matSchematics from './index';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
     declarations: [
@@ -12,11 +13,16 @@ import * as matSchematics from './index';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        matSchematics.modules
+        matSchematics.modules,
+        MatDatepickerModule
     ],
     exports: [
         matSchematics.components,
-        matSchematics.modules
+        matSchematics.modules,
+        MatDatepickerModule
+    ],
+    providers: [
+        MatDatepickerModule
     ]
 })
 export class MatSchematicsComponentsModule { }

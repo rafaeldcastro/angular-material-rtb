@@ -2,9 +2,6 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 import { appRoutesNames } from './app-routes-names';
 
-/**COMPONENTS */
-import { PageNotFoundComponent } from './pages/_page-not-found/page-not-found.component';
-
 /**GUARDS */
 import { AuthCanActivateGuard } from './shared/services/_guards/can-activate/auth.can-activate.guard';
 
@@ -33,7 +30,7 @@ const appRoutes: Routes = [
   },
   {
     path: '**',
-    component: PageNotFoundComponent
+    loadChildren: () => import('./pages/_page-not-found/page-not-fount.module').then(m => m.PageNotFoundModule),
   }
 ];
 

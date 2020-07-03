@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Title } from '@angular/platform-browser';
+import { appRoutesNames } from '@app/app-routes-names';
 
 @Component({
   selector: 'page-not-found',
@@ -9,10 +9,8 @@ import { Title } from '@angular/platform-browser';
 })
 export class PageNotFoundComponent {
 
-  constructor(private titleService: Title) {
-  }
+  appRoutes = appRoutesNames;
 
-  private setPageAttributes(){
-    this.titleService.setTitle("Página Não Encontrada");
+  constructor() {
   }
 }

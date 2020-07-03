@@ -14,6 +14,7 @@ import { AuthService } from '@shared/services/_auth/auth.service';
 })
 export class LoginPageComponent {
   
+  appRoutes = appRoutesNames;
   showHidePass = true;
 
   loginForm: FormGroup = new FormGroup({
@@ -39,7 +40,7 @@ export class LoginPageComponent {
 
   }
 
-  private navigateTo() {
+  navigateTo() {
     this.router.navigate([`/${appRoutesNames.HOME.route}`]);
   }
 }
