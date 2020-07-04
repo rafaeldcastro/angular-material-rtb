@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 
-import { Title } from '@angular/platform-browser';
-
 @Component({
   selector: 'home',
   templateUrl: './home.component.html',
@@ -9,10 +7,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class HomeComponent {
 
-  constructor(private titleService: Title) {
+  constructor() {
   }
 
-  private setPageAttributes(){
-    this.titleService.setTitle("Home");
-  }
 }

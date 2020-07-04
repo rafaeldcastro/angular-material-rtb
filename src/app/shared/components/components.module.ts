@@ -9,7 +9,7 @@ import { LoadingMiniComponent } from './loading-mini/loading-mini.component';
 
 @NgModule({
     declarations: [
-        LoadingMiniComponent
+        LoadingMiniComponent,
     ],
     imports: [
         CommonModule,

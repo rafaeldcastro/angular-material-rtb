@@ -33,6 +33,7 @@
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "node_modules/animate.css/animate.min.css",
               "src/assets/fonts/style.css",
+              "src/assets/theme/app-root-logo.scss",
               "src/styles.scss"
             ],
             "scripts": [

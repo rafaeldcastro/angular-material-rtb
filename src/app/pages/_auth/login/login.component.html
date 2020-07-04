@@ -1,4 +1,4 @@
-<form [formGroup]="loginForm" novalidate (ngSubmit)="onSubmit()" class="d-flex justify-content-center form-container">
+<form [formGroup]="form" novalidate (ngSubmit)="onSubmit()" class="d-flex justify-content-center form-container">
 
     <mat-card class="align-self-center animate__animated animate__fadeIn">
         
@@ -10,12 +10,12 @@
 
                 <mat-icon matPrefix>person</mat-icon>
 
-                <mat-label>Username</mat-label>
+                <mat-label>Email</mat-label>
 
-                <input matInput formControlName="username">
+                <input matInput formControlName="email" type="email">
 
-                <mat-error *ngIf="false">
-                    Username is <strong>required</strong>
+                <mat-error *ngIf="formcontrol.email.errors" align="end">
+                    Email is <strong>required</strong>
                 </mat-error>
             </mat-form-field>
 
@@ -25,16 +25,16 @@
 
                 <mat-label>Password</mat-label>
 
-                <input matInput [type]="showHidePass ? 'password' : 'text'" formControlName="password">
+                <input matInput [type]="showHidePass ? 'password' : 'text'" formControlName="password" autocomplete="off">
 
                 <mat-icon matSuffix class="icon-visibility" (click)="showHidePass = !showHidePass" 
                     title="Show/Hide password"
                     [attr.aria-label]="'Hide password'"
                     [attr.aria-pressed]="showHidePass">{{showHidePass ? 'visibility_off' : 'visibility'}}</mat-icon>
+                
+                <small class="custom-mat-hint"><a [routerLink]="'/'+ appRoutes.RECOVER_PASSWORD.route"><strong>Forgot password</strong></a></small>
 
-                <mat-hint align="end"><a [routerLink]="'/'+ appRoutes.RECOVER_PASSWORD.route"><strong>Forgot password</strong></a></mat-hint>
-
-                <mat-error *ngIf="false">
+                <mat-error *ngIf="formcontrol.password.errors">
                     Password is <strong>required</strong>
                 </mat-error>
             </mat-form-field>
@@ -42,14 +42,15 @@
             <br>
 
             <div class="d-flex justify-content-center">
-                <button mat-raised-button color="warn" type="submit" class="w-75 rounded-pill">Entrar</button>
+                <button [disabled]="form.invalid" mat-raised-button color="warn" type="submit" class="w-75 rounded-pill">Login</button>
             </div>
 
-
+            <br>
             <span class="divider line one-line">OR</span>
-
+            <br>
+            
             <div class="d-flex justify-content-center">
-                <p>Don't you have an account? <a [routerLink]="'/'+ appRoutes.SIGNUP.route"><strong>Sign-Up</strong></a></p>
+                <p>Don't you have an account? <a [routerLink]="'/'+ appRoutes.SIGNUP.route"><strong>Sign Up</strong></a></p>
             </div>
 
         </mat-card-content>

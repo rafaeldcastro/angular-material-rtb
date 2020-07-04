@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { warn as maincolor } from '@core/theme/colors.ts';
+import { warn as maincolor } from '@core/shared/theme/colors.ts';
 
 @Component({
   selector: 'undraw-not-found',

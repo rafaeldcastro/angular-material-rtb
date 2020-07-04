@@ -5,7 +5,7 @@
     "paths": {
       "@app/*": ["app/*"],
       "@core/*": ["app/_core/*"],
-      "@constants/*": ["app/_core/_constants/*"],
+      "@constants/*": ["app/_core/shared/_constants/*"],
       "@env": ["environments/environment"],
       "@models/*": ["app/shared/models/*"],
       "@pages/*": ["app/pages/*"],

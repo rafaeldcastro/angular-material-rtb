@@ -1,29 +1,50 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthBaseView } from '../shared/classes/auth-base-view';
 
-import { appRoutesNames } from '@app/app-routes-names';
+/**NOTIFICATIONS */
+import { LoadingNotifications } from '@shared/components/loading/shared/notifications/loading.notifications';
 
 /**SERVICES */
 import { AuthService } from '@shared/services/_auth/auth.service';
+import { EventEmitterService } from '@shared/services/emitter/event-emitter.service';
 
 @Component({
   selector: 'app-recover-password-page',
   templateUrl: './recover.component.html',
   styleUrls: ['./recover.component.scss']
 })
-export class RecoverPasswordPageComponent {
+export class RecoverPasswordPageComponent extends AuthBaseView {
+
+  showHidePass = true;
 
   constructor(
-    private router: Router,
-    private authService: AuthService
+    protected router: Router,
+    protected authService: AuthService
   ) {
+    super(router, authService);
 
-    if (this.authService.currentUserValue) {
-      this.navigateTo();
-    }
+    this.form = new FormGroup({
+      'email': new FormControl('', [Validators.required, Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")])
+    });
+
   }
 
-  private navigateTo(){
-    this.router.navigate([`/${appRoutesNames.HOME.route}`]);
+  onSubmit() {
+    super.onSubmit();
+
+    EventEmitterService.get(LoadingNotifications.PRESENT).emit();
+
+    this.authService.recoverPassword(this.formcontrol.email.value)
+      .then(resp => {
+        this.authService.currentUserValue = resp;
+        EventEmitterService.get(LoadingNotifications.DISMISS).emit();
+        this.navigateTo('HOME');
+      })
+      .catch(e => {
+        EventEmitterService.get(LoadingNotifications.DISMISS).emit();
+        console.log(e);
+      });
   }
 }

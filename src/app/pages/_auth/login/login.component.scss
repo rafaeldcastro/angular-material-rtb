@@ -22,12 +22,22 @@
                     margin-right: 5px;
                 }
 
+                mat-error{
+                    text-align: right;
+                }
+
             }
             
             .form-field-pass{
                 
                 .icon-visibility{
                     cursor: pointer;
+                }
+
+                .custom-mat-hint{
+                    bottom: -18px;
+                    position: absolute;
+                    right: -26px;
                 }
             }
 

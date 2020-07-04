@@ -1,46 +1,51 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthBaseView } from '../shared/classes/auth-base-view';
 
-import { appRoutesNames } from '@app/app-routes-names';
+/**NOTIFICATIONS */
+import { LoadingNotifications } from '@shared/components/loading/shared/notifications/loading.notifications';
 
 /**SERVICES */
 import { AuthService } from '@shared/services/_auth/auth.service';
+import { EventEmitterService } from '@shared/services/emitter/event-emitter.service';
 
 @Component({
   selector: 'app-login-page',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginPageComponent {
-  
-  appRoutes = appRoutesNames;
+export class LoginPageComponent extends AuthBaseView {
+
   showHidePass = true;
 
-  loginForm: FormGroup = new FormGroup({
-    username: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required])
-  });
-
   constructor(
-    private router: Router,
-    private authService: AuthService
+    protected router: Router,
+    protected authService: AuthService
   ) {
+    super(router, authService);
 
-    if (this.authService.currentUserValue) {
-      this.navigateTo();
-    }
-  }
-
-  get form() {
-    return this.loginForm.controls;
-  }
-
-  onSubmit(){
+    this.form = new FormGroup({
+      email: new FormControl('', Validators.compose([Validators.required, Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")])),
+      password: new FormControl('', Validators.compose([Validators.required, Validators.minLength(3)])),
+    });
 
   }
 
-  navigateTo() {
-    this.router.navigate([`/${appRoutesNames.HOME.route}`]);
+  onSubmit() {
+    super.onSubmit();
+
+    EventEmitterService.get(LoadingNotifications.PRESENT).emit();
+
+    this.authService.login(this.formcontrol.email.value, this.formcontrol.password.value)
+      .then(resp => {
+        this.authService.currentUserValue = resp;
+        EventEmitterService.get(LoadingNotifications.DISMISS).emit();
+        this.navigateTo('HOME');
+      })
+      .catch(e => {
+        console.log(e);
+        EventEmitterService.get(LoadingNotifications.DISMISS).emit();
+      });
   }
 }

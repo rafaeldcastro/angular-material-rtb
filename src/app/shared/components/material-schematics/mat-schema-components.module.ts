@@ -14,7 +14,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
         FormsModule,
         ReactiveFormsModule,
         matSchematics.modules,
-        MatDatepickerModule
+        MatDatepickerModule,
     ],
     exports: [
         matSchematics.components,

@@ -9,6 +9,9 @@ import { environment } from '@env';
 /**MODELS */
 import { User } from '@models/user/user.model';
 
+/**SERVICES */
+import { LocalStorageService } from '@shared/services/local-storage/local-storage.service';
+
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
@@ -26,6 +29,11 @@ export class AuthService {
         return this.currentUserSubject.value;
     }
 
+    set currentUserValue(user) {
+        LocalStorageService.setItem('CURRENT-USER', user)
+        this.currentUserSubject.next(user);
+    }
+
     /**
      * Sign-In the user, store user details and jwt token in local storage to 
      * keep user logged in between page refreshes
@@ -35,10 +43,8 @@ export class AuthService {
         // return this.http.post<any>(`${this.URL_API}/authenticate`, { username, password })
         return this.http.post<any>('https://reqres.in/api/login', { username, password })
             .pipe(map(user => {
-                localStorage.setItem(`${APP_CONSTANTS.APP_PREFIX}CURRENT-USER`, JSON.stringify(user));
-                this.currentUserSubject.next(user);
                 return user;
-            }));
+            })).toPromise();
     }
 
     logout() {
@@ -50,14 +56,14 @@ export class AuthService {
     recoverPassword(email: string) {
 
         return this.http.post<any>(`${this.URL_API}/recover_password`, { email })
-            .pipe(map(data => data));
+            .pipe(map(data => data)).toPromise();
     }
 
     signUp(user){
-
-        let body = JSON.stringify({ 'user': user })
-
-        return this.http.post<any>(`${this.URL_API}/signup`, body)
-            .pipe(map(data => data));
+        // let body = JSON.stringify(user)
+        
+        return this.http.post<any>('https://reqres.in/api/register', user)
+        // return this.http.post<any>(`${this.URL_API}/signup`, body)
+            .pipe(map(data => data)).toPromise();
     }
 }

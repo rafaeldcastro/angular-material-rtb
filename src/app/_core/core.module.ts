@@ -5,12 +5,17 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { MaterialCoreComponentsModule } from './mat-core-components.module';
 
+/**COMPONENTS */
+import { LoadingComponent } from './../shared/components/loading/loading.component';
+
 export function jwtTokenGetter() {
     return localStorage.getItem('access_token');
 }
 
 @NgModule({
-    declarations: [],
+    declarations: [
+        LoadingComponent
+    ],
     imports: [
         CommonModule,
         HttpClientModule,
@@ -23,7 +28,8 @@ export function jwtTokenGetter() {
         })
     ],
     exports: [
-        FormsModule
+        FormsModule,
+        LoadingComponent
     ],
     providers: [
         // { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true }
