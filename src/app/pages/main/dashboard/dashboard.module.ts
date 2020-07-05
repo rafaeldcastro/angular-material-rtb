@@ -3,25 +3,27 @@ import { CommonModule } from '@angular/common';
 
 /** MODULES */
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '@shared/shared.module';
 
 /** COMPONENTS */
-import { HomeComponent } from './home.component';
+import { DashboardComponent } from './dashboard.component';
 
 @NgModule({
   declarations: [
-    HomeComponent,
+    DashboardComponent,
   ],
   imports: [
     CommonModule,
+    SharedModule,
     RouterModule.forChild([
       {
         path: '',
-        component: HomeComponent
+        component: DashboardComponent
       }
     ])
   ],
   exports: [
-    HomeComponent
+    DashboardComponent
   ]
 })
-export class HomeModule {}
+export class DashboardModule {}

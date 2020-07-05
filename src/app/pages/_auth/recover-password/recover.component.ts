@@ -4,7 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthBaseView } from '../shared/classes/auth-base-view';
 
 /**NOTIFICATIONS */
-import { LoadingNotifications } from '@shared/components/loading/shared/notifications/loading.notifications';
+import { LoadingNotifications } from '@core/shared/notifications/core-notifications';
 
 /**SERVICES */
 import { AuthService } from '@shared/services/_auth/auth.service';
