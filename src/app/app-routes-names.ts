@@ -10,9 +10,5 @@ export const appRoutesNames = {
     RECOVER_PASSWORD: {
         route: 'recover-password',
         label: 'Recover Password'
-    },
-    HOME: {
-        route: 'home',
-        label: 'Home'
     }
 }

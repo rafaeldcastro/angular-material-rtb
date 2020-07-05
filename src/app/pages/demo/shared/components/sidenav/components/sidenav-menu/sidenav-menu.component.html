@@ -1,0 +1,30 @@
+<mat-nav-list class="sidenav-menu" *ngIf="menu">
+
+    <div *ngFor="let item of menu; let menuItemIndex = index;">
+
+        <a *ngIf="!item.submenu || item.submenu.length == 0"
+            mat-list-item [routerLink]="'/'+ mainRoutes[item.route].route" routerLinkActive="active" class="sidenav-item">
+            <mat-icon>{{item.icon}}</mat-icon>
+            <span class="sidenav-item-label">{{item.label}} A</span>
+        </a>
+    
+        <mat-list-item *ngIf="item.submenu && item.submenu.length > 0"
+            id="parentmenu{{menuItemIndex}}" data-toggle="collapse" data-target="#childmenu{{menuItemIndex}}" aria-expanded="false"
+            aria-controls="childmenu{{menuItemIndex}}" class="sidenav-item sidenav-parentmenu">
+            <mat-icon>{{item.icon}}</mat-icon>
+            <span class="sidenav-item-label">{{item.label}}</span>
+        </mat-list-item>
+    
+        <mat-nav-list *ngIf="item.submenu && item.submenu.length > 0"
+            id="childmenu{{menuItemIndex}}" class="collapse sidenav-childmenu" aria-labelledby="parentmenu{{menuItemIndex}}" data-parent="#parentmenu{{menuItemIndex}}">
+    
+            <a *ngFor="let subitem of item.submenu;"
+                mat-list-item [routerLink]="'/'+ mainRoutes[subitem.route].route" routerLinkActive="active" class="sidenav-item">
+                <span class="sidenav-item-label">{{subitem.label}}</span>
+            </a>
+    
+        </mat-nav-list>
+    </div>
+
+
+</mat-nav-list>

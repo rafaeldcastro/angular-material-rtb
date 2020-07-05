@@ -1,0 +1,48 @@
+.sidenav-menu {
+    width: 220px;
+}
+
+.sidenav-item {
+    font-size: 14px;
+
+    mat-icon,
+    .mat-icon {
+        font-size: 24px;
+    }
+
+    .sidenav-item-label {
+        font-weight: 500;
+        margin: 10px 0 7px 12px;
+    }
+}
+
+.sidenav-parentmenu {
+
+    position: relative;
+
+    &::after {
+        font-size: 18px;
+        position: absolute;
+        right: 14px;
+        top: calc(50% - 10px);
+    }
+}
+
+.sidenav-parentmenu[aria-expanded="false"] {
+    &::after {
+        content: '+';
+    }
+}
+.sidenav-parentmenu[aria-expanded="true"] {
+    &::after {
+        content: '\2013';
+    }
+}
+
+.sidenav-childmenu {
+
+    .sidenav-item-label{
+        font-weight: normal;
+        margin-left: 36px;
+    }
+}

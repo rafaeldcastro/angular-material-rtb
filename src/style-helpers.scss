@@ -1,11 +1,14 @@
-/* HELPERS & FIXES*/
+/* =========================
+
+        HELPERS & FIXES
+
+=========================*/
 
 *:active, *:focus{ outline: none !important; }
 
 mat-form-field{
     input { padding-bottom: 4px !important; }
 }
-
 
 /* Change Autocomplete styles in We*/
 input:-webkit-autofill,

@@ -8,10 +8,14 @@ const appRoutes: Routes = [
     path: '',
     loadChildren: () => import('./pages/main/main.module').then(m => m.MainPagesModule),
     canActivate: [ AuthCanActivateGuard ]
-  },
+  },  
   {
     path: '',
     loadChildren: () => import('./pages/_auth/auth.module').then(m => m.AuthPagesModule),
+  },
+  {
+    path: 'demo',
+    loadChildren: () => import('./pages/demo/demo.module').then(m => m.DemoPagesModule)
   },
   {
     path: '**',
