@@ -28,6 +28,13 @@ select:-webkit-autofill:focus {
 
 /* Divider, Instagram style*/
 
+.list-divider{
+    height: 1px;
+    margin: 5px 0;
+    overflow: hidden;
+    background-color: #e5e5e5;
+}
+
 .divider { display: flex;
     &:before, &:after { content: ""; flex: 1; }
 }
