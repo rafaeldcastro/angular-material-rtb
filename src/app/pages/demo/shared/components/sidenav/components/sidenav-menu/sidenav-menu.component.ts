@@ -19,7 +19,7 @@ export class SidenavMenuComponent {
     },
     {
       icon: 'menu_book',
-      label: 'Parent Menu',
+      label: 'Parent Menu 1',
       route: '',
       submenu: [
         {
@@ -31,11 +31,23 @@ export class SidenavMenuComponent {
           icon: 'home',
           label: 'Dashboard',
           route: 'DASHBOARD'
-        },
+        }
+      ]
+    },
+    {
+      icon: 'email',
+      label: 'Parent Menu 2',
+      route: '',
+      submenu: [
+        {
+          icon: 'home',
+          label: 'Dashboard',
+          route: 'DASHBOARD'
+        }
       ]
     }
   ]
-  
+
   constructor() {
   }
 

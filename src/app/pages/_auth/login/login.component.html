@@ -32,7 +32,7 @@
                     [attr.aria-label]="'Hide password'"
                     [attr.aria-pressed]="showHidePass">{{showHidePass ? 'visibility_off' : 'visibility'}}</mat-icon>
                 
-                <small class="custom-mat-hint"><a [routerLink]="'/'+ appRoutes.RECOVER_PASSWORD.route"><strong>Forgot password</strong></a></small>
+                <small class="custom-mat-hint"><a [routerLink]="'/'+ authRoutes.RECOVER_PASSWORD.route"><strong>Forgot password</strong></a></small>
 
                 <mat-error *ngIf="formcontrol.password.errors">
                     Password is <strong>required</strong>
@@ -50,7 +50,7 @@
             <br>
             
             <div class="d-flex justify-content-center">
-                <p>Don't you have an account? <a [routerLink]="'/'+ appRoutes.SIGNUP.route"><strong>Sign Up</strong></a></p>
+                <p>Don't you have an account? <a [routerLink]="'/'+ authRoutes.SIGNUP.route"><strong>Sign Up</strong></a></p>
             </div>
 
         </mat-card-content>

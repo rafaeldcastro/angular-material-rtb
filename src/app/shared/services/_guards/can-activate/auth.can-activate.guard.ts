@@ -2,10 +2,9 @@ import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { appRoutesNames } from '@app/app-routes-names';
-
 /**SERVICES */
 import { AuthService } from '@shared/services/_auth/auth.service';
+import { authRoutesNames } from '@pages/_auth/auth-routes-names';
 
 @Injectable({ providedIn: 'root' })
 export class AuthCanActivateGuard implements CanActivate {
@@ -21,7 +20,7 @@ export class AuthCanActivateGuard implements CanActivate {
     if (currentUser) {
       return true;
     }
-    this.router.navigate([`/${appRoutesNames.LOGIN.route}`]);
+    this.router.navigate([`/${authRoutesNames.LOGIN.route}`]);
     return false;
   }
 }
