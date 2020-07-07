@@ -1,8 +1,10 @@
 <mat-sidenav-container class="sidenav-container" autosize>
 
     <!-- SIDEBAR -->
-    <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-        [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport 
+        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+        [mode]="(isHandset$ | async) ? 'over' : 'side'" 
+        [opened]="(isHandset$ | async) === false">
 
         <div class="sidenav-header">
 
@@ -60,7 +62,7 @@
                 </a>
 
                 <a *ngIf="item.submenu && item.submenu.length > 0" mat-list-item href="#childmenu{{menuItemIndex}}"
-                    aria-controls="childmenu{{menuItemIndex}}" aria-expanded="false" data-toggle="collapse"
+                    attr.aria-controls="childmenu{{menuItemIndex}}" aria-expanded="false" data-toggle="collapse"
                     class="sidenav-item sidenav-parentmenu">
 
                     <mat-icon>{{item.icon}}</mat-icon>
