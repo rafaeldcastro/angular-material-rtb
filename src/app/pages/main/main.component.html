@@ -1,19 +1,329 @@
-<mat-sidenav-container class="sidenav-container">
+<mat-sidenav-container class="sidenav-container" autosize>
 
-    <mat-sidenav #drawer class="sidenav" fixedInViewport 
-        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-        [mode]="(isHandset$ | async) ? 'over' : 'side'" 
-        [opened]="(isHandset$ | async) === false">
+    <!-- SIDEBAR -->
+    <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+        [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
 
-        <sidenav-content></sidenav-content>
+        <div class="sidenav-header">
+
+            <div class="sidenav-header-bg"
+                [ngStyle]="{'background-image': 'url(' + 'data:image/jpeg;base64,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' + ')'}">
+            </div>
+
+            <div class="user-card">
+
+                <div class="user-thumb">
+                    <img
+                        src="data:image/jpeg;base64,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" />
+                </div>
+
+                <div class="user-info">
+                    <div class="user-name">John Doe</div>
+                    <div class="user-description"><small>Supervisor</small></div>
+
+                    <button mat-icon-button class="btn-user-menu" [matMenuTriggerFor]="userMenu" aria-label="">
+                        <mat-icon>expand_more</mat-icon>
+                    </button>
+
+                    <mat-menu #userMenu="matMenu" xPosition="before">
+                        <button mat-menu-item>
+                            <mat-icon>person</mat-icon>
+                            <span>Profile</span>
+                        </button>
+
+                        <button mat-menu-item>
+                            <mat-icon>settings</mat-icon>
+                            <span>My Settings</span>
+                        </button>
+
+                        <div role="separator" class="list-divider"></div>
+
+                        <button mat-menu-item>
+                            <mat-icon>exit_to_app</mat-icon>
+                            <span>Sign Out</span>
+                        </button>
+                    </mat-menu>
+
+                </div>
+            </div>
+        </div>
+
+        <mat-nav-list class="sidenav-menu" *ngIf="menu">
+
+            <div *ngFor="let item of menu; let menuItemIndex = index;">
+
+                <a *ngIf="!item.submenu || item.submenu.length == 0" mat-list-item
+                    [routerLink]="'/'+ mainRoutes[item.route].route" routerLinkActive="active" class="sidenav-item">
+
+                    <mat-icon>{{item.icon}}</mat-icon>
+                    <span class="sidenav-item-label">{{item.label}} A</span>
+                </a>
+
+                <a *ngIf="item.submenu && item.submenu.length > 0" mat-list-item href="#childmenu{{menuItemIndex}}"
+                    aria-controls="childmenu{{menuItemIndex}}" aria-expanded="false" data-toggle="collapse"
+                    class="sidenav-item sidenav-parentmenu">
+
+                    <mat-icon>{{item.icon}}</mat-icon>
+                    <span class="sidenav-item-label">{{item.label}}</span>
+                </a>
+
+                <mat-nav-list *ngIf="item.submenu && item.submenu.length > 0" id="childmenu{{menuItemIndex}}"
+                    class="collapse sidenav-childmenu">
+
+                    <a *ngFor="let subitem of item.submenu;" mat-list-item
+                        [routerLink]="'/'+ mainRoutes[subitem.route].route" routerLinkActive="active"
+                        class="sidenav-item">
+                        <span class="sidenav-item-label">{{subitem.label}}</span>
+                    </a>
+
+                </mat-nav-list>
+            </div>
+
+            <div class="sidenav-footer">
+                <p>© 2020 - Rafael de Castro</p>
+                <p><strong>Version:</strong>&nbsp;1.0.5</p>
+            </div>
+
+
+        </mat-nav-list>
+
 
     </mat-sidenav>
 
     <mat-sidenav-content>
 
-        <main-header (sidenavClose)="drawer.toggle()"></main-header>
+        <!-- TOOLBAR -->
+        <mat-toolbar color="primary">
 
-        <router-outlet></router-outlet><!-- Child Views are loaded here -->
+            <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+                <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+            </button>
+
+            DEMO
+
+            <ul class="nav" style="position: absolute; right: 0;">
+                
+                <!-- Notifications -->
+                <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                        aria-expanded="true">
+                        <i class="material-icons">notifications</i>
+                        <span class="label-count">7</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">NOTIFICATIONS</li>
+                        <li class="body">
+                            <div class="slimScrollDiv"
+                                style="position: relative; overflow: hidden; width: auto; height: 254px;">
+                                <ul class="menu" style="overflow: hidden; width: auto; height: 254px;">
+                                    <li>
+                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
+                                            <div class="icon-circle bg-light-green">
+                                                <i class="material-icons">person_add</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4>12 new members joined</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 14 mins ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
+                                            <div class="icon-circle bg-cyan">
+                                                <i class="material-icons">add_shopping_cart</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4>4 sales made</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 22 mins ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
+                                            <div class="icon-circle bg-red">
+                                                <i class="material-icons">delete_forever</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4><b>Nancy Doe</b> deleted account</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 3 hours ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
+                                            <div class="icon-circle bg-orange">
+                                                <i class="material-icons">mode_edit</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4><b>Nancy</b> changed name</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 2 hours ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
+                                            <div class="icon-circle bg-blue-grey">
+                                                <i class="material-icons">comment</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4><b>John</b> commented your post</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 4 hours ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
+                                            <div class="icon-circle bg-light-green">
+                                                <i class="material-icons">cached</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4><b>John</b> updated status</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> 3 hours ago
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
+                                            <div class="icon-circle bg-purple">
+                                                <i class="material-icons">settings</i>
+                                            </div>
+                                            <div class="menu-info">
+                                                <h4>Settings updated</h4>
+                                                <p>
+                                                    <i class="material-icons">access_time</i> Yesterday
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="slimScrollBar"
+                                    style="background: rgba(0, 0, 0, 0.5); width: 4px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 0px; z-index: 99; right: 1px;">
+                                </div>
+                                <div class="slimScrollRail"
+                                    style="width: 4px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 0px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="footer">
+                            <a href="javascript:void(0);" class=" waves-effect waves-block">View All Notifications</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- #END# Notifications -->
+                <!-- Tasks -->
+                <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                        <i class="material-icons">flag</i>
+                        <span class="label-count">9</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">TASKS</li>
+                        <li class="body">
+                            <div class="slimScrollDiv"
+                                style="position: relative; overflow: hidden; width: auto; height: 254px;">
+                                <ul class="menu tasks" style="overflow: hidden; width: auto; height: 254px;">
+                                    <li>
+                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
+                                            <h4>
+                                                Footer display issue
+                                                <small>32%</small>
+                                            </h4>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-pink" role="progressbar" aria-valuenow="85"
+                                                    aria-valuemin="0" aria-valuemax="100" style="width: 32%">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
+                                            <h4>
+                                                Make new buttons
+                                                <small>45%</small>
+                                            </h4>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-cyan" role="progressbar" aria-valuenow="85"
+                                                    aria-valuemin="0" aria-valuemax="100" style="width: 45%">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
+                                            <h4>
+                                                Create new dashboard
+                                                <small>54%</small>
+                                            </h4>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-teal" role="progressbar" aria-valuenow="85"
+                                                    aria-valuemin="0" aria-valuemax="100" style="width: 54%">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
+                                            <h4>
+                                                Solve transition issue
+                                                <small>65%</small>
+                                            </h4>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-orange" role="progressbar"
+                                                    aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"
+                                                    style="width: 65%">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);" class=" waves-effect waves-block">
+                                            <h4>
+                                                Answer GitHub questions
+                                                <small>92%</small>
+                                            </h4>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-purple" role="progressbar"
+                                                    aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"
+                                                    style="width: 92%">
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="slimScrollBar"
+                                    style="background: rgba(0, 0, 0, 0.5); width: 4px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 0px; z-index: 99; right: 1px;">
+                                </div>
+                                <div class="slimScrollRail"
+                                    style="width: 4px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 0px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="footer">
+                            <a href="javascript:void(0);" class=" waves-effect waves-block">View All Tasks</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- #END# Tasks -->
+                <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i
+                            class="material-icons">more_vert</i></a></li>
+            </ul>
+
+        </mat-toolbar>
+
+        <!-- Child Views are loaded here -->
+        <router-outlet></router-outlet>
 
     </mat-sidenav-content>
 

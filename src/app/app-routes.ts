@@ -14,10 +14,6 @@ const appRoutes: Routes = [
     loadChildren: () => import('./pages/_auth/auth.module').then(m => m.AuthPagesModule),
   },
   {
-    path: 'demo',
-    loadChildren: () => import('./pages/demo/demo.module').then(m => m.DemoPagesModule)
-  },
-  {
     path: '**',
     loadChildren: () => import('./pages/_page-not-found/page-not-fount.module').then(m => m.PageNotFoundModule),
   }

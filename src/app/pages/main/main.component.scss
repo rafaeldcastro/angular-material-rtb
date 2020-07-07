@@ -3,5 +3,123 @@
 }
 
 .sidenav {
-  width: 200px;
+  border-right: none;
+  padding-bottom: 62px;
+  width: 300px;
+
+  .sidenav-header {
+    height: 135px;
+    overflow: hidden;
+    position: relative;
+
+    .sidenav-header-bg {
+      background-color: #fff;
+      background-position: center;
+      background-size: cover;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      z-index: 1;
+    }
+
+    .user-card {
+      height: 100%;
+      padding-left: 10px;
+      padding-bottom: 10px;
+      position: relative;
+      z-index: 2;
+
+      .user-thumb {
+        border-radius: 100%;
+        bottom: 60px;
+        height: 48px;
+        overflow: hidden;
+        position: absolute;
+        width: 48px;
+      }
+
+      .user-info {
+        bottom: 10px;
+        padding-right: 50px;
+        position: absolute;
+        width: 100%;
+
+        .user-name {
+          font-size: 16px;
+          font-weight: 500;
+          margin-bottom: -5px;
+        }
+
+        .btn-user-menu {
+          bottom: 0;
+          position: absolute;
+          right: 10px;
+        }
+      }
+    }
+  }
+
+
+  .sidenav-footer {
+    background: #fff;
+    border-top: 1px solid #ddd;
+    bottom: 0;
+    height: 62px;
+    padding: 10px 16px;
+    position: absolute;
+    width: 100%;
+
+    p {
+      font-size: 12px;
+      margin: 0;
+    }
+  }
+}
+
+.sidenav-item {
+  font-size: 14px;
+
+  mat-icon,
+  .mat-icon {
+    color: #747474;
+    font-size: 24px;
+  }
+
+  .sidenav-item-label {
+    font-weight: 500;
+    margin: 10px 0 7px 12px;
+  }
+}
+
+.sidenav-parentmenu {
+
+  position: relative;
+
+  &::after {
+    font-size: 18px;
+    position: absolute;
+    right: 14px;
+    top: calc(50% - 10px);
+  }
+}
+
+.sidenav-parentmenu[aria-expanded="false"] {
+  &::after {
+    content: '+';
+  }
+}
+
+.sidenav-parentmenu[aria-expanded="true"] {
+  &::after {
+    content: '\2013';
+  }
+}
+
+.sidenav-childmenu {
+
+  .sidenav-item-label {
+    font-weight: normal;
+    margin-left: 36px;
+  }
 }
