@@ -3,59 +3,36 @@ import { Observable } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { map, shareReplay } from 'rxjs/operators';
 
-import { mainRoutesNames } from './main-routes-names';
+import { CoreBaseView } from '@core/shared/classes/core-base-view';
+import { uiElementsRoutesNames } from './ui-elements/ui-elements-names';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainPagesComponent {
+export class MainPagesComponent extends CoreBaseView {
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(result => result.matches),
     shareReplay()
   );
 
-  mainRoutes = mainRoutesNames;
+  menu;
 
-  menu = [
-    {
-      icon: 'home',
-      label: 'Dashboard',
-      route: 'DASHBOARD'
-    },
-    {
-      icon: 'menu_book',
-      label: 'Parent Menu 1',
-      route: '',
-      submenu: [
-        {
-          icon: 'home',
-          label: 'Dashboard',
-          route: 'DASHBOARD'
-        },
-        {
-          icon: 'home',
-          label: 'Dashboard',
-          route: 'DASHBOARD'
-        }
-      ]
-    },
-    {
-      icon: 'email',
-      label: 'Parent Menu 2',
-      route: '',
-      submenu: [
-        {
-          icon: 'home',
-          label: 'Dashboard',
-          route: 'DASHBOARD'
-        }
-      ]
+  constructor(private breakpointObserver: BreakpointObserver) {
+    super();
+    this.factoryMenu();
+  }
+
+  private factoryMenu() {
+    let routes = this.mainRoutes;
+
+    routes.UI_ELEMENTS['submenu'] = [];
+    for (var x in uiElementsRoutesNames) {
+      uiElementsRoutesNames.hasOwnProperty(x) && routes.UI_ELEMENTS['submenu'].push(uiElementsRoutesNames[x])
     }
-  ]
 
-  constructor(private breakpointObserver: BreakpointObserver) { }
-
+    this.menu = routes;
+  }
 }

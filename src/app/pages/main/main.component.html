@@ -48,30 +48,33 @@
             </div>
         </div>
 
-        <mat-nav-list data-simplebar *ngIf="menu" class="sidenav-content">
+        <mat-nav-list *ngIf="menu" data-simplebar class="sidenav-content animate__animated animate__fadeIn">
 
-            <div *ngFor="let item of menu; let menuItemIndex = index;">
+            <div>
+                <!-- Apply IF accorndingly with user role permissions -->
+                <a mat-list-item [routerLink]="'/'+ menu.DASHBOARD.route" routerLinkActive="active"
+                    class="sidenav-item">
 
-                <a *ngIf="!item.submenu || item.submenu.length == 0" mat-list-item
-                    [routerLink]="'/'+ mainRoutes[item.route].route" routerLinkActive="active" class="sidenav-item">
+                    <mat-icon>{{menu.DASHBOARD.icon}}</mat-icon>
+                    <span class="sidenav-item-label">{{menu.DASHBOARD.label}}</span>
+                </a>
+            </div>
 
-                    <mat-icon>{{item.icon}}</mat-icon>
-                    <span class="sidenav-item-label">{{item.label}} A</span>
+            <div>
+                <!-- Apply IF accorndingly with user role permissions -->
+
+                <a mat-list-item href="#childmenu-{{menu.UI_ELEMENTS.route}}"
+                    attr.aria-controls="childmenu-{{menu.UI_ELEMENTS.route}}" aria-expanded="false"
+                    data-toggle="collapse" class="sidenav-item sidenav-parentmenu">
+
+                    <mat-icon>{{menu.UI_ELEMENTS.icon}}</mat-icon>
+                    <span class="sidenav-item-label">{{menu.UI_ELEMENTS.label}}</span>
                 </a>
 
-                <a *ngIf="item.submenu && item.submenu.length > 0" mat-list-item href="#childmenu{{menuItemIndex}}"
-                    attr.aria-controls="childmenu{{menuItemIndex}}" aria-expanded="false" data-toggle="collapse"
-                    class="sidenav-item sidenav-parentmenu">
+                <mat-nav-list id="childmenu-{{menu.UI_ELEMENTS.route}}" class="collapse sidenav-childmenu">
 
-                    <mat-icon>{{item.icon}}</mat-icon>
-                    <span class="sidenav-item-label">{{item.label}}</span>
-                </a>
-
-                <mat-nav-list *ngIf="item.submenu && item.submenu.length > 0" id="childmenu{{menuItemIndex}}"
-                    class="collapse sidenav-childmenu">
-
-                    <a *ngFor="let subitem of item.submenu;" mat-list-item
-                        [routerLink]="'/'+ mainRoutes[subitem.route].route" routerLinkActive="active"
+                    <a *ngFor="let subitem of menu.UI_ELEMENTS.submenu;" mat-list-item
+                        [routerLink]="'/'+ menu.UI_ELEMENTS.route +'/'+ subitem.route" routerLinkActive="active"
                         class="sidenav-item">
                         <span class="sidenav-item-label">{{subitem.label}}</span>
                     </a>
@@ -322,7 +325,11 @@
         </mat-toolbar>
 
         <!-- Child Views are loaded here -->
-        <router-outlet></router-outlet>
+        <main class="container-fluid">
+
+            <router-outlet></router-outlet>
+
+        </main>
 
     </mat-sidenav-content>
 
