@@ -34,6 +34,7 @@
               "node_modules/animate.css/animate.min.css",
               "src/assets/theme/adminbsb/style.scss",
               "src/assets/theme/adminbsb/adminbsb.min.css",
+              "src/assets/theme/plugins/simplebar-scroll/simplebar.min.css",
               "src/assets/fonts/style.css",
               "src/assets/theme/app-root-logo.scss",
               "src/styles.scss"
@@ -41,7 +42,8 @@
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/@popperjs/core/dist/umd/popper.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "src/assets/theme/plugins/simplebar-scroll/simplebar.min.js"
             ]
           },
           "configurations": {

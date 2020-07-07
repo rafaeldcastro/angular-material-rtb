@@ -1,10 +1,8 @@
-<mat-sidenav-container class="sidenav-container" autosize>
+<mat-sidenav-container class="page-wrapper" autosize>
 
     <!-- SIDEBAR -->
-    <mat-sidenav #drawer class="sidenav" fixedInViewport 
-        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-        [mode]="(isHandset$ | async) ? 'over' : 'side'" 
-        [opened]="(isHandset$ | async) === false">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+        [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
 
         <div class="sidenav-header">
 
@@ -50,7 +48,7 @@
             </div>
         </div>
 
-        <mat-nav-list class="sidenav-menu" *ngIf="menu">
+        <mat-nav-list data-simplebar *ngIf="menu" class="sidenav-content">
 
             <div *ngFor="let item of menu; let menuItemIndex = index;">
 
@@ -81,13 +79,12 @@
                 </mat-nav-list>
             </div>
 
-            <div class="sidenav-footer">
-                <p>© 2020 - Rafael de Castro</p>
-                <p><strong>Version:</strong>&nbsp;1.0.5</p>
-            </div>
-
-
         </mat-nav-list>
+
+        <div class="sidenav-footer">
+            <p>© 2020 - Rafael de Castro</p>
+            <p><strong>Version:</strong>&nbsp;1.0.0</p>
+        </div>
 
 
     </mat-sidenav>
@@ -104,7 +101,7 @@
             DEMO
 
             <ul class="nav" style="position: absolute; right: 0;">
-                
+
                 <!-- Notifications -->
                 <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button"
