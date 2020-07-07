@@ -5,9 +5,11 @@ $sidenavFooterHeight: 62px;
 }
 
 .sidenav {
+  background-color: #fdfdfd;
   border-right: none;
+  box-shadow: -4px 0 5px 0 #000;
   padding-bottom: $sidenavFooterHeight;
-  width: 300px;
+  width: 280px;
 
   /*Created on-the-fly*/
   ::ng-deep .mat-drawer-inner-container{
@@ -16,7 +18,6 @@ $sidenavFooterHeight: 62px;
 
   .sidenav-header {
     height: 135px;
-    overflow: hidden;
     position: relative;
 
     .sidenav-header-bg {
@@ -32,7 +33,7 @@ $sidenavFooterHeight: 62px;
 
     .user-card {
       height: 100%;
-      padding-left: 10px;
+      padding-left: 15px;
       padding-bottom: 10px;
       position: relative;
       z-index: 2;
@@ -48,6 +49,7 @@ $sidenavFooterHeight: 62px;
 
       .user-info {
         bottom: 10px;
+        color: #fff;
         padding-right: 50px;
         position: absolute;
         width: 100%;
@@ -61,7 +63,7 @@ $sidenavFooterHeight: 62px;
         .btn-user-menu {
           bottom: 0;
           position: absolute;
-          right: 10px;
+          right: 15px;
         }
       }
     }
@@ -69,6 +71,7 @@ $sidenavFooterHeight: 62px;
 
   .sidenav-content{
     height: calc(100% - (74px + #{$sidenavFooterHeight} )); /*To activate Custom scroll plugin*/
+    padding-top: 0;
 
     .sidenav-item {
       font-size: 14px;
@@ -136,3 +139,11 @@ $sidenavFooterHeight: 62px;
   }
 }
 
+.main-header{
+  
+  .mainHeaderDropdown{
+    .dropdown-menu{
+      top: 30px !important;
+    }
+  }
+}
